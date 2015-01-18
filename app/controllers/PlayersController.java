@@ -22,7 +22,10 @@ public class PlayersController  extends Controller {
     public static Result show(Long id){
         if(id!=null){
             Player p = new Player(2L, "John");
-            return ok(Json.toJson(p));
+            if(id.equals(2L))
+                return ok(Json.toJson(p));
+            else
+                return notFound("not found");
         }
         return notFound("nf");
     }
