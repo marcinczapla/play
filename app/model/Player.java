@@ -13,6 +13,12 @@ public class Player {
         this.name = name;
     }
 
+    public Player(String id, String name){
+        Long idFromString = Long.parseLong(id);
+        this.id = idFromString;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

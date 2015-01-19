@@ -2,7 +2,9 @@ package controllers;
 
 import model.Player;
 import play.libs.Json;
+import play.mvc.BodyParser;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 import java.util.ArrayList;
@@ -30,4 +32,26 @@ public class PlayersController  extends Controller {
         return notFound("nf");
     }
 
+    public static Result delete(Long id){
+        if(id!=null){
+            Player p = new Player(2L, "John");
+            if(id.equals(2L))
+                return ok(Json.toJson(p));
+            else
+                return notFound("not found");
+        }
+        return notFound("nf");
+    }
+
+    public static Result edit() {
+        Http.RequestBody body = request().body();
+        return ok("Got txt: " + body.asText());
+    }
+
+    @BodyParser.Of(BodyParser.Json.class)
+    public static Result add() {
+        Http.RequestBody body = request().body();
+        Player player = Json.fromJson(body.asJson(),Player.class);
+        return ok("Got Json: " + body.asJson());
+    }
 }
