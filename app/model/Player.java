@@ -8,14 +8,11 @@ public class Player {
     private Long id;
     private String name;
 
-    public Player(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    public Player() {
     }
 
-    public Player(String id, String name){
-        Long idFromString = Long.parseLong(id);
-        this.id = idFromString;
+    public Player(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 

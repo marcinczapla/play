@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import model.Player;
 import play.libs.Json;
 import play.mvc.BodyParser;
@@ -51,7 +52,8 @@ public class PlayersController  extends Controller {
     @BodyParser.Of(BodyParser.Json.class)
     public static Result add() {
         Http.RequestBody body = request().body();
-        Player player = Json.fromJson(body.asJson(),Player.class);
+        JsonNode jsonNode = body.asJson();
+        Player player = Json.fromJson(jsonNode,Player.class);
         return ok("Got Json: " + body.asJson());
     }
 }
