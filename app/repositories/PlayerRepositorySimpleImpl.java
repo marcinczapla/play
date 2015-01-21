@@ -32,13 +32,13 @@ public class PlayerRepositorySimpleImpl implements PlayerRepository {
     }
 
     @Override
-    public void addPlayer(Player player) {
-        players.add(player);
+    public void removeById(Long id) throws NoSuchElementException {
+        players.removeIf(p-> p.getId().equals(id));
     }
 
     @Override
-    public void removePlayer(Player player) {
-        players.remove(player);
+    public void addPlayer(Player player) {
+        players.add(player);
     }
 
     @Override

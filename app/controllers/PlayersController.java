@@ -28,38 +28,30 @@ public class PlayersController  extends Controller {
 
     public static Result show(Long id){
         Result result =  badRequest("badRequest");
-        if(id!=null){
-            try {
-                Player p = playerRepository.getById(id);
-                result = ok(Json.toJson(p));
-            }catch (NoSuchElementException nsee){
-                result = notFound("not found");
-            }
+        try {
+            Player p = playerRepository.getById(id);
+            result = ok(Json.toJson(p));
+        }catch (NoSuchElementException nsee){
+            result = notFound("not found");
         }
         return result;
     }
 
     public static Result delete(Long id){
-        if(id!=null){
-            Player p = new Player(2L, "John");
-            if(id.equals(2L))
-                return ok(Json.toJson(p));
-            else
-                return notFound("not found");
-        }
-        return notFound("nf");
+        playerRepository.removeById(id);
+        return ok();
     }
 
     public static Result edit() {
-        Http.RequestBody body = request().body();
-        return ok("Got txt: " + body.asText());
+        Player player = Json.fromJson(request().body().asJson(),Player.class);
+        playerRepository.updatePlayer(player);
+        return created();
     }
 
     @BodyParser.Of(BodyParser.Json.class)
     public static Result add() {
-        Http.RequestBody body = request().body();
-        JsonNode jsonNode = body.asJson();
-        Player player = Json.fromJson(jsonNode,Player.class);
-        return ok("Got Json: " + body.asJson());
+        Player player = Json.fromJson(request().body().asJson(),Player.class);
+        playerRepository.addPlayer(player);
+        return created();
     }
 }

@@ -12,8 +12,8 @@ public interface PlayerRepository {
 
     public List<Player> getAll();
     public Player getById(Long id) throws NoSuchElementException;
+    public void removeById(Long id) throws NoSuchElementException;
 
     public void addPlayer(Player player);
-    public void removePlayer(Player player);
     public void updatePlayer(Player player) throws NoSuchElementException;
 }
