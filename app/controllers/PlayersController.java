@@ -27,12 +27,12 @@ public class PlayersController  extends Controller {
     }
 
     public static Result show(Long id){
-        Result result =  badRequest("badRequest");
+        Result result;
         try {
             Player p = playerRepository.getById(id);
             result = ok(Json.toJson(p));
         }catch (NoSuchElementException nsee){
-            result = notFound("not found");
+            result = notFound("player not found");
         }
         return result;
     }
