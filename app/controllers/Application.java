@@ -11,4 +11,8 @@ public class Application extends Controller {
         return ok(index.render("Your new application is ready. mmm"));
     }
 
+    public static Result defaultControler(String path) {
+        return notFound();
+    }
+
 }

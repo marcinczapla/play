@@ -14,3 +14,5 @@ DELETE        /api/players/delete/:id        controllers.PlayersController.delet
 PUT           /api/players/edit              controllers.PlayersController.edit()
 POST          /api/players/add               controllers.PlayersController.add()
 
+GET           /*path                         controllers.Application.defaultControler(path: String)
+
