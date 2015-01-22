@@ -12,3 +12,5 @@ PUT           /api/players/edit
 POST          /api/players/add         
 
 przy wysyłaniu jsona w ciele requestu nalezy podać odpowiedni content-type:application/json
+
+aplikacja odpalona tutaj play.marcinczapla.com
