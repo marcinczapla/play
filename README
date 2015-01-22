@@ -1,0 +1,16 @@
+"aplikacja" napisana w playu wymagana java 8
+
+uruchomic mozna za pomocą acivator run
+aby zmienić adres i port
+-Dhttp.address=0.0.0.0 -Dhttp.port=51234
+
+
+GET           /api/players/all         
+GET           /api/players/find/:id    
+DELETE        /api/players/delete/:id  
+PUT           /api/players/edit        
+POST          /api/players/add         
+
+przy wysyłaniu jsona w ciele requestu nalezy podać odpowiedni content-type:application/json
+
+aplikacja odpalona tutaj play.marcinczapla.com
